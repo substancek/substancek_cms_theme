@@ -1,0 +1,35 @@
+<nav xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     class="navbar navbar-static-top navbar-inverse"
+     role="navigation"
+     id="navbar-view">
+  <div class="container-fluid">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-view-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="${request.application_url}/">
+        ${api.site_title}
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse"
+      tal:on-error="nothing"
+      id="navbar-view-collapse">
+      <ul class="nav navbar-nav">
+        <li tal:define="items [i for i in api.list_children(api.navigation_root, 'pview') if i.in_navigation]"
+            tal:repeat="item items"
+            class="${api.inside(context, item) and 'active' or None}">
+          <a href="${api.url(item)}" title="${item.description}">${item.title}</a>
+        </li>
+      </ul>
+      <div tal:replace="api.render_template('kotti:templates/view/search.pt')" />
+    </div>
+  </div>
+</nav>

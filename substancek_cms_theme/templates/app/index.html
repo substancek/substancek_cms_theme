@@ -1,0 +1,126 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:define="page_slots api.slots;
+                  dummy api.view_needed"
+      metal:define-macro="main">
+
+  <head>
+    <meta charset="utf-8" />
+    <title metal:define-slot="page-title">${api.page_title | api.site_title}</title>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="${context.description | ''}" />
+
+    <more tal:omit-tag="" metal:define-slot="head-more"></more>
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="${request.static_url('substancek_cms_theme:templates/app/styles/main.css')}">
+    <!-- endbuild -->
+
+    <!-- 'inhead' slots: support third party injection of things that
+         go into the head -->
+    <tal:slots tal:define="snippets page_slots.inhead"
+               tal:condition="snippets"
+               tal:repeat="snippet snippets"
+               tal:replace="structure snippet" />
+    <script tal:on-error="nothing">
+      kotti_context_url = '${request.resource_url(context)}';
+    </script>
+  </head>
+
+  <body class="${request.user is not None and 'logged-in'}
+               view-${request.view_name or 'default'}
+               ${api.body_css_class}">
+    <nav tal:replace="api.render_template('kotti:templates/view/nav.pt')" />
+
+    <div class="container">
+      <metal:define-slot define-slot="container">
+      <div tal:replace="api.render_template('kotti:templates/edit/breadcrumbs.pt')" />
+
+      <div class="row">
+        <div class="col-md-3 left-column"
+             tal:condition="page_slots.left"
+             tal:content="api.render_template('kotti:templates/render_column_slot.pt', slot=page_slots.left)">
+        </div>
+
+        <div tal:define="span 12 - int(bool(page_slots.left)) * 3 - int(bool(page_slots.right)) * 3" class="col-md-${span}">
+          <div class="above-content"
+               tal:condition="page_slots.abovecontent"
+               tal:content="api.render_template('kotti:templates/render_content_slot.pt', slot=page_slots.abovecontent)">
+          </div>
+
+          <div tal:replace="api.render_template('kotti:templates/messages.pt')" />
+
+          <div class="inner-content">
+            <div metal:define-slot="content">
+              <h1>${context.title}</h1>
+            </div>
+          </div>
+
+          <div class="below-content"
+               tal:condition="page_slots.belowcontent"
+               tal:content="api.render_template('kotti:templates/render_content_slot.pt', slot=page_slots.belowcontent)">
+          </div>
+        </div>
+
+        <div class="col-md-3 right-column"
+             tal:condition="page_slots.right"
+             tal:content="api.render_template('kotti:templates/render_column_slot.pt', slot=page_slots.right)">
+        </div>
+      </div>
+
+      <footer tal:replace="api.render_template('kotti:templates/view/footer.pt')"></footer>
+
+    </div>
+
+    <tal:slots tal:define="snippets page_slots.beforebodyend"
+               tal:condition="snippets"
+               tal:repeat="snippet snippets"
+               tal:replace="structure snippet" />
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="${request.static_url('substancek_cms_theme:templates/bower_components/jquery/dist/jquery.js')}"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/plugins.js -->
+    <script src="${request.static_url('substancek_cms_theme:templates/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js')}"></script>
+    <script src="${request.static_url('substancek_cms_theme:templates/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js')}"></script>
+    <script src="${request.static_url('substancek_cms_theme:templates/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js')}"></script>
+    <script src="${request.static_url('substancek_cms_theme:templates/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js')}"></script>
+    <script src="${request.static_url('substancek_cms_theme:templates/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js')}"></script>
+    <script src="${request.static_url('substancek_cms_theme:templates/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js')}"></script>
+    <script src="${request.static_url('substancek_cms_theme:templates/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js')}"></script>
+    <script src="${request.static_url('substancek_cms_theme:templates/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js')}"></script>
+    <script src="${request.static_url('substancek_cms_theme:templates/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js')}"></script>
+    <script src="${request.static_url('substancek_cms_theme:templates/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js')}"></script>
+    <script src="${request.static_url('substancek_cms_theme:templates/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js')}"></script>
+    <script src="${request.static_url('substancek_cms_theme:templates/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js')}"></script>
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/main.js -->
+    <script src="${request.static_url('substancek_cms_theme:templates/app/scripts/main.js')}"></script>
+    <!-- endbuild -->
+  </body>
+</html>

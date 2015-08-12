@@ -1,0 +1,4 @@
+[run]
+omit =
+  *test*py
+  substancek_cms_theme/alembic/*

@@ -1,0 +1,108 @@
+kotti image browser tests
+=========================
+
+Setup and Login
+---------------
+  >>> from kotti import testing
+  >>> tools = testing.setUpFunctional(**{
+  ...     'pyramid.includes': 'substancek_cms_theme.views.image',
+  ...     })
+  >>> browser = tools['Browser']()
+  >>> ctrl = browser.getControl
+
+  >>> browser.open(testing.BASE_URL + '/edit')
+  >>> "Log in" in browser.contents
+  True
+  >>> ctrl("Username or email", index=0).value = "admin"
+  >>> ctrl("Password").value = "secret"
+  >>> ctrl(name="submit").click()
+  >>> "Welcome, Administrator" in browser.contents
+  True
+
+Add images
+----------
+
+  >>> image = testing.asset('sendeschluss.jpg').read()
+
+Image 1
+
+  >>> from kotti.resources import get_root
+  >>> root = get_root()
+  >>> from kotti.resources import Image
+  >>> root['image-1'] = image_obj = Image(image, u"sendeschluss.jpg", u"image/jpeg")
+
+View image scales
+-----------------
+
+Default scale
+
+  >>> browser.open(testing.BASE_URL + '/image-1/image')
+  >>> browser.headers["content-type"]
+  'image/jpeg'
+  >>> browser.headers["content-length"]
+  '107341'
+  >>> browser.headers["content-disposition"].lower()
+  'inline;filename="sendeschluss.jpg"'
+
+Default scale (alias)
+
+  >>> browser.open(testing.BASE_URL + '/image-1')
+  >>> browser.headers["content-type"]
+  'image/jpeg'
+  >>> browser.headers["content-length"]
+  '107341'
+  >>> browser.headers["content-disposition"].lower()
+  'inline;filename="sendeschluss.jpg"'
+
+Default scale, attachment
+
+  >>> browser.open(testing.BASE_URL + '/image-1/image/download')
+  >>> browser.headers["content-type"]
+  'image/jpeg'
+  >>> browser.headers["content-length"]
+  '107341'
+  >>> browser.headers["content-disposition"].lower()
+  'attachment;filename="sendeschluss.jpg"'
+
+Span1
+
+  >>> browser.open(testing.BASE_URL + '/image-1/image/span1')
+  >>> browser.headers["content-type"]
+  'image/jpeg'
+  >>> 1000 < int(browser.headers["content-length"]) < 2000
+  True
+  >>> browser.headers["content-disposition"].lower()
+  'inline;filename="sendeschluss.jpg"'
+
+Span1, attachment
+
+  >>> browser.open(testing.BASE_URL + '/image-1/image/span1/download')
+  >>> browser.headers["content-type"]
+  'image/jpeg'
+  >>> browser.headers["content-disposition"].lower()
+  'attachment;filename="sendeschluss.jpg"'
+
+Invalid predefined scale (should return original size)
+
+  >>> browser.open(testing.BASE_URL + '/image-1/image/invalid_scale')
+  >>> browser.headers["content-type"]
+  'image/jpeg'
+  >>> browser.headers["content-length"]
+  '107341'
+  >>> browser.headers["content-disposition"].lower()
+  'inline;filename="sendeschluss.jpg"'
+
+Invalid predefined scale (should return original size), attachment
+
+  >>> browser.open(testing.BASE_URL + '/image-1/image/invalid_scale/download')
+  >>> browser.headers["content-type"]
+  'image/jpeg'
+  >>> browser.headers["content-length"]
+  '107341'
+  >>> browser.headers["content-disposition"].lower()
+  'attachment;filename="sendeschluss.jpg"'
+
+TearDown
+--------
+
+  >>> testing.tearDown()
