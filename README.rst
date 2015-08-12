@@ -1,16 +1,6 @@
 substancek_cms_theme
 ====================
 
-This is an experimental plugin based on ``Kotti``.
-
-It provides:
-
-* a clone of the Kotti's default theme
-
-* integration by default with the Yeoman toolchain (SASS, html minification, image optimization, etc)
-
-* public website decoupled from the private content administration area
-
 |build status|_
 |code coverage|_
 
@@ -18,6 +8,14 @@ It provides:
 .. _build status: http://travis-ci.org/substancek/substancek_cms_theme
 .. |code coverage| image:: http://codecov.io/github/substancek/substancek_cms_theme/coverage.svg?branch=master
 .. _code coverage: http://codecov.io/github/substancek/substancek_cms_theme?branch=master
+
+``substancek_cms_theme`` is a layer upon the ``Kotti`` framework that provides:
+
+* a clone of the Kotti's default theme
+
+* integration by default with the Yeoman toolchain (SASS, html minification, image optimization, etc)
+
+* public website decoupled from the private content administration area
 
 Requirements
 ------------
