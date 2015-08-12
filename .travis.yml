@@ -8,8 +8,8 @@ env:
   - KOTTI_TEST_DB_STRING=mysql+oursql://root@localhost:3306/kotti_testing
   - KOTTI_TEST_DB_STRING=sqlite://
 before_install:
-  pip install codecov
-  npm install -g bower gulp-cli
+  - pip install codecov
+  - npm install -g bower gulp-cli
 install:
   - travis_retry pip install "pip==1.3.1"  # fix issue with fanstatic==1.0a
   - travis_retry pip install -e . -r https://raw.github.com/Kotti/Kotti/stable/requirements.txt --use-mirrors
