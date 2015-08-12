@@ -3,8 +3,13 @@
       metal:use-macro="api.macro('substancek_cms_theme:templates/app/index.html')">
 
   <article metal:fill-slot="content" class="document-view content">
-    ${context.title}
-    TODO:
-    * fetch right api.macro
+    <h1>${context.title}</h1>
+    <p class="lead">
+      ${context.description}
+    </p>
+    <div tal:replace="api.render_template('kotti:templates/view/tags.pt')" />
+    <div class="body" tal:content="structure context.body | None">
+    </div>
   </article>
+
 </html>
