@@ -1,5 +1,5 @@
 substancek_cms_theme
-================
+====================
 
 This is an experimental plugin based on ``Kotti``.
 
