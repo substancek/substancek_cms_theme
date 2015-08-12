@@ -24,6 +24,8 @@ Requirements
 
 * Python 2.7
 
+* Kotti
+
 * nodejs >= 0.12
 
 * npm (latest)
@@ -32,16 +34,16 @@ Requirements
 
 * bower
 
-How to install substancek_cms_theme
------------------------------
+Installation
+------------
 
-It is simple (**to be fixed**)::
+Once installed Kotti and the other requirements clone this package and type::
 
-    $ make install-prerequisites     # performs some apt-get install, you need sudo
-    $ make install-dev
-    $ make run-dev
+    $ python setup.py develop
+    $ python setup.py build_all
+    $ pserve development.ini
 
-Visit:
+and visit:
 
 * http://localhost:5000/ (public website)
 * http://localhost:5000/cms (backend with admin / qwerty authentication)
