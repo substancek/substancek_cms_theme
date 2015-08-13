@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE 1.0\n"
-"POT-Creation-Date: 2015-07-30 00:22+0200\n"
+"POT-Creation-Date: 2015-08-13 22:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Generated-By: Lingua 3.10\n"
 
 #. Default: Not found
-#: ./substancek_cms_theme/i18n.py:4
+#: ./substancek_cms_theme/i18n.py:6
 msgid "not_found"
 msgstr ""
 
 #. Default: Unauthorized
-#: ./substancek_cms_theme/i18n.py:5
+#: ./substancek_cms_theme/i18n.py:7
 msgid "unauthorized"
 msgstr ""
