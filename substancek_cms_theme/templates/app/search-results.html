@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="Kotti"
+      metal:use-macro="api.macro('substancek_cms_theme:templates/app/index.html')">
+
+  <div metal:fill-slot="content">
+
+    <h1 i18n:translate="">Search Results</h1>
+
+    <dl id="search-results">
+      <tal:repeat tal:repeat="result results">
+        <dt class="search-result">
+          <a href="${request.application_url}${result.path}">${result.title}</a>
+        </dt>
+        <dd>
+          <p tal:content="result.description"></p>
+        </dd>
+      </tal:repeat>
+    </dl>
+    
+    <p tal:condition="not:results">No results were found.</p>
+
+  </div>
+</html>

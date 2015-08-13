@@ -15,6 +15,7 @@ substancek_cms_theme_includes = [
     'substancek_cms_theme.views.document',
     'substancek_cms_theme.views.notfound',
     'substancek_cms_theme.views.forbidden',
+    'substancek_cms_theme.views.search',
 ]
 
 
@@ -26,4 +27,5 @@ def custom_settings():
         'kotti.asset_overrides': 'substancek_cms_theme:templates/app/kotti-overrides/',
         'pyramid.includes': ' '.join(substancek_cms_theme_includes),
         'kotti.configurators': ' '.join(('substancek_cms_theme.kotti_configure',)),
+        'kotti.search_content': 'substancek_cms_theme.views.util.search_content',
         }
