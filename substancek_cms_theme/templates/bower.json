@@ -2,7 +2,7 @@
   "name": "templates",
   "private": true,
   "dependencies": {
-    "bootstrap-sass": "~3.3.5"
+    "bootstrap-sass": "https://github.com/twbs/bootstrap-sass.git#master"
   },
   "overrides": {
     "bootstrap-sass": {
