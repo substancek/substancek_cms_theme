@@ -9,7 +9,8 @@ substancek_cms_theme
 .. |code coverage| image:: http://codecov.io/github/substancek/substancek_cms_theme/coverage.svg?branch=master
 .. _code coverage: http://codecov.io/github/substancek/substancek_cms_theme?branch=master
 
-``substancek_cms_theme`` is a layer upon the ``Kotti`` framework that provides:
+``substancek_cms_theme`` is a http://kotti.pylonsproject.org based project.
+It adds a layer upon the ``Kotti`` framework that provides:
 
 * a clone of the Kotti's default theme
 
@@ -35,7 +36,7 @@ Requirements
 Installation
 ------------
 
-Once installed Kotti and the other requirements clone this package and type::
+Once installed ``Kotti`` and the other requirements clone this package and type::
 
     $ python setup.py develop
     $ python setup.py build_all
