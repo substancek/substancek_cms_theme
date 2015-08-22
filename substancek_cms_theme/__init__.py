@@ -4,6 +4,19 @@ _ = TranslationStringFactory('substancek_cms_theme')
 
 from pyramid_html_minifier.config import DEFAULT_PLACEHOLDER
 
+base_includes = [
+    'pyramid_html_minifier',
+    'substancek_cms_theme',
+    'substancek_cms_theme.static',
+    'substancek_cms_theme.views.default',
+    'substancek_cms_theme.views.image',
+    'substancek_cms_theme.views.file',
+    'substancek_cms_theme.views.home',
+    'substancek_cms_theme.views.document',
+    'substancek_cms_theme.views.notfound',
+    'substancek_cms_theme.views.forbidden',
+    'substancek_cms_theme.views.search',
+]
 
 def kotti_configure(settings):
     placeholder = settings.get(
@@ -13,6 +26,8 @@ def kotti_configure(settings):
     base_asset_overrides = ' substancek_cms_theme:templates/{0}/kotti-overrides/'
     asset_overrides = base_asset_overrides.format(placeholder)
     settings['kotti.asset_overrides'] += asset_overrides
+
+    settings['pyramid.includes'] += ' {0}'.format(' '.join(base_includes))
 
 def includeme(config):
     # translations
