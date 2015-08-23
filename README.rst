@@ -9,12 +9,11 @@ substancek_cms_theme
 .. |code coverage| image:: http://codecov.io/github/substancek/substancek_cms_theme/coverage.svg?branch=master
 .. _code coverage: http://codecov.io/github/substancek/substancek_cms_theme?branch=master
 
-``substancek_cms_theme`` is a http://kotti.pylonsproject.org based project.
-It adds a layer upon the ``Kotti`` framework that provides:
+``substancek_cms_theme`` is a http://kotti.pylonsproject.org based project that:
 
-* a clone of the Kotti's default theme
+* provides a clone of the Kotti's default theme
 
-* integration by default with the Yeoman toolchain (SASS, html minification, image optimization, etc)
+* shows how to integrate and distribute a Python package integrated with a Yeoman setup (http://yeoman.io)
 
 * public website decoupled from the private content administration area
 
