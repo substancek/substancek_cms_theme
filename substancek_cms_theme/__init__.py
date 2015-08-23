@@ -19,6 +19,14 @@ base_includes = [
 ]
 
 def kotti_configure(settings):
+    assets_configure(settings)
+
+    includes_configure(settings)
+
+def includes_configure(settings):
+    settings['pyramid.includes'] += ' {0}'.format(' '.join(base_includes))
+
+def assets_configure(settings):
     placeholder = settings.get(
         'pyramid_html_minifier.placeholder',
         DEFAULT_PLACEHOLDER
@@ -26,8 +34,6 @@ def kotti_configure(settings):
     base_asset_overrides = ' substancek_cms_theme:templates/{0}/kotti-overrides/'
     asset_overrides = base_asset_overrides.format(placeholder)
     settings['kotti.asset_overrides'] += asset_overrides
-
-    settings['pyramid.includes'] += ' {0}'.format(' '.join(base_includes))
 
 def includeme(config):
     # translations
