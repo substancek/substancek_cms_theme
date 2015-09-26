@@ -44,4 +44,4 @@ Once installed ``Kotti`` and the other requirements clone this package and type:
 and visit:
 
 * http://localhost:5000/ (public website)
-* http://localhost:5000/cms (backend with admin / qwerty authentication)
+* http://localhost:5000/admin (backend with admin / qwerty authentication)
