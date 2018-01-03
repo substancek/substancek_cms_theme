@@ -1,3 +1,4 @@
+-e.
 alembic==0.8.8
 appdirs==1.4.0
 Babel==2.3.4
@@ -15,6 +16,7 @@ FormEncode==2.0.0a1
 funcsigs==1.0.2
 html2text==2016.9.19
 html5lib==0.9999999
+ipaddress==1.0.19
 iso8601==0.1.11
 js.angular==1.1.4
 js.bootstrap==3.3.4
@@ -34,7 +36,6 @@ js.modernizr==2.5.3.1
 js.select2==3.4.1
 js.tinymce==4.2.7
 Kotti==1.3.0
-# kotti-backend==0.2.0
 -e git+git@github.com:Kotti/kotti_backend.git@develop#egg=kotti_backend
 kotti-image==0.1.4
 kotti-tinymce==0.5.4
@@ -49,12 +50,15 @@ Pillow==5.0.0
 plone.scale==3.0
 polib==1.0.7
 py-bcrypt==0.4
+Pygments==2.2.0
 pyramid==1.7.3
 pyramid-beaker==0.8
 pyramid-chameleon==0.3
+pyramid-debugtoolbar==4.3
 pyramid-deform==0.2
 pyramid-html-minifier==0.1
 pyramid-mailer==0.14.1
+pyramid-mako==1.0.2
 pyramid-tm==1.0
 pyramid-zcml==1.0.0
 python-editor==1.0.1
@@ -68,7 +72,6 @@ shutilwhich==1.1.0
 six==1.10.0
 SQLAlchemy==1.1.1
 SQLAlchemy-Utils==0.32.9
--e git+git@github.com:substancek/substancek_cms_theme.git@3aec270e27d9b9e91a6cea3f44d6224b2a35d545#egg=substancek_cms_theme
 transaction==1.6.1
 translationstring==1.3
 Unidecode==0.4.19
