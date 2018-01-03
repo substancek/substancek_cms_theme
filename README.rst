@@ -37,6 +37,9 @@ Installation
 
 Once installed ``Kotti`` and the other requirements clone this package and type::
 
+    $ virtualenv --no-site-packages python
+    $ source python/bin/activate
+    $ pip install -r requirements.txt
     $ python setup.py develop
     $ python setup.py build_all
     $ pserve development.ini
