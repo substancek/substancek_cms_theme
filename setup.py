@@ -16,6 +16,13 @@ requires = [
     'build_commands',
     ]
 
+test_requirements = [
+    'pytest',
+    'pytest-cov',
+    'pytest-pep8',
+    'mock',
+]
+
 setup(name='substancek_cms_theme',
       version='0.0.1.dev0',
       description='substancek_cms_theme',
@@ -48,4 +55,7 @@ setup(name='substancek_cms_theme',
       bower = build_commands:BowerCommand
       gulp = build_commands:GulpCommand
       """,
+      extras_require={
+          'tests': test_requirements,
+      },
       )

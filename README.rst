@@ -48,3 +48,12 @@ and visit:
 
 * http://localhost:5000/ (public website)
 * http://localhost:5000/admin (backend with admin / qwerty authentication)
+
+
+Tests
+-----
+
+::
+
+    $ pip install tox
+    $ tox -epy27
