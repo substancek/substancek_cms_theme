@@ -1,34 +1,39 @@
+# -*- coding: utf-8 -*-
 import pytest
 from substancek_cms_theme.views.file import (
     attachment_view,
     inline_view,
     )
+from kotti.testing import asset
 
 
 class TestFileViews:
+
     def _create_file(self, config):
         from kotti.resources import File
-        self.file = File("file contents", u"myf\xfcle.png", u"image/png")
+        self.file = File(asset('logo.png').read(), u"myfüle.png", u"image/png")
 
     def _test_common_headers(self, headers):
         for name in ('Content-Disposition', 'Content-Length', 'Content-Type'):
             assert isinstance(headers[name], str)
-        assert headers["Content-Length"] == "13"
+        assert headers["Content-Length"] == "55715"
         assert headers["Content-Type"] == "image/png"
 
     @pytest.mark.parametrize("params",
                              [(inline_view, 'inline'),
                               (attachment_view, 'attachment')])
-    def test_file_views(self, params, config, filedepot):
+    def test_file_views(self, params, config, filedepot, dummy_request,
+                        depot_tween):
         view, disposition = params
         self._create_file(config)
-        res = view(self.file, None)
+
+        res = view(self.file, dummy_request)
 
         self._test_common_headers(res.headers)
 
-        assert res.headers["Content-Disposition"] == disposition + \
-            ';filename="myfle.png"'
+        assert res.content_disposition.startswith(
+            '{0}; filename=my'.format(disposition))
 
-        assert res.app_iter.file.read() == 'file contents'
+        assert res.app_iter.file.read() == asset('logo.png').read()
         res.app_iter.file.seek(0)
-        assert res.body == 'file contents'
+        assert res.body == asset('logo.png').read()

@@ -10,7 +10,7 @@ base_includes = [
     'substancek_cms_theme.static',
     'substancek_cms_theme.views.default',
 #    'substancek_cms_theme.views.image',
-#    'substancek_cms_theme.views.file',
+    'substancek_cms_theme.views.file',
     'substancek_cms_theme.views.home',
     'substancek_cms_theme.views.document',
     'substancek_cms_theme.views.notfound',
