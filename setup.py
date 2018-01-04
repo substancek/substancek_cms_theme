@@ -17,10 +17,20 @@ requires = [
     ]
 
 test_requirements = [
-    'pytest',
-    'pytest-cov',
-    'pytest-pep8',
+    'Kotti[testing]',
+    'WebTest',
     'mock',
+    'py>=1.4.29',
+    'pyquery',
+    'pytest>=3.0.0',
+    'pytest-cov',
+    'pytest-pep8!=1.0.3',
+    'pytest-travis-fold',
+    'pytest-virtualenv',
+    'pytest-xdist',
+    'tox',
+    'virtualenv',  # needed for scaffolding tests
+    'zope.testbrowser>=5.0.0',
 ]
 
 setup(name='substancek_cms_theme',
