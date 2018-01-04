@@ -2,7 +2,7 @@ class TestForbidden:
 
     def test_forbidden_view_webtest(self, root, webtest, db_session):
         from kotti.resources import Document
-        root[u'doc'] = doc = Document(title='document')
+        root[u'doc'] = doc = Document(title=u'document')
         db_session.flush()
         assert doc.state == 'private'
 
